@@ -19,6 +19,7 @@ echo "result is $result4"
 
 
 declare -A dict
+declare -a Array
 dict[0]=$result1
 dict[1]=$result2
 dict[2]=$result3
@@ -26,3 +27,12 @@ dict[3]=$result4
 
 echo "numbers in dictionary are: "
 echo ${dict[@]}
+
+total=${#dict[@]}
+for (( i=0; i<4; i++ ))
+do
+	Array[$i]=${dict[$i]}
+done
+
+echo "numbers stored into Array"
+echo ${Array[@]}
