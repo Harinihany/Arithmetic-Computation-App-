@@ -29,10 +29,21 @@ echo "numbers in dictionary are: "
 echo ${dict[@]}
 
 total=${#dict[@]}
-for (( i=0; i<4; i++ ))
+for (( j=1; j<total; j++ ))
 do
-	Array[$i]=${dict[$i]}
+		key=${Array[$j]}
+                all=$(( $j-1 ))
+                while (( $all>=0 && ${Array[all]}<$key ))
+                do
+                        Array[$all+1]=${Array[all]}
+                        all=$(( $all-1 ))
+                done
+
+Array[$all+1]=$key
 done
+echo "Array After Descending Order"
+echo ${Array[@]}
+
 
 echo "numbers stored into Array"
 echo ${Array[@]}
